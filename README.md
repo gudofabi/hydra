@@ -9,12 +9,12 @@ Simple Project Management Tools
 
 ## Technology Stack
 
-# Backend:
+### Backend:
 
 -   Laravel 11
 -   MYSQL
 
-# Frontend:
+### Frontend:
 
 -   Nuxtjs 3
 -   TailwindCSS
