@@ -5,8 +5,6 @@ namespace App\Services;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Auth;
 
-use App\Events\UserRegistered;
-use App\Events\UserLoggedIn;
 
 class UserService
 {
