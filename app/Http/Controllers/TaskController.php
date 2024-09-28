@@ -51,8 +51,7 @@ class TaskController extends Controller
     {
         try {
             $task = $this->taskService->updateTask($id, $request->all());
-            return $task;
-            // return new TaskResource($task);
+            return new TaskResource($task);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 404);
         }
@@ -61,8 +60,9 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Task $task)
+    public function destroy($id)
     {
-        //
+        $this->taskService->deleteTask($id);
+        return response()->json(['message' => 'Successfully deleted the task.']);
     }
 }

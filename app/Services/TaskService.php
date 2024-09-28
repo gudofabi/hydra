@@ -8,7 +8,7 @@ class TaskService
 {
     protected $taskRepository;
 
-    public function __construct(taskRepository $taskRepository) {
+    public function __construct(TaskRepository $taskRepository) {
         $this->taskRepository = $taskRepository;
     }
 
@@ -28,5 +28,13 @@ class TaskService
             throw new \Exception('Task not found.');
         }
         return $this->taskRepository->update($task, $data);
+    }
+
+    public function deleteTask($id) {
+        $task = $this->taskRepository->findById($id);
+        if (!$task) {
+            throw new \Exception('Task not found.');
+        }
+        $this->taskRepository->delete($task);
     }
 }

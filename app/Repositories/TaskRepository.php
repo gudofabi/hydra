@@ -29,4 +29,8 @@ class TaskRepository {
        return $task;
     }
 
+    public function delete(Task $task) {
+        $task->delete();
+    }
+
 }
