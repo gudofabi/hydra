@@ -25,11 +25,8 @@ class AuthController extends Controller
             return response()->json(['message' => 'Registration failed'], 400);
         }
 
-        return response()->json([
-            'access_token' => $registration['token'],
-            'token_type' => 'Bearer',
-            'user' => $registration['user']
-        ]);
+        return response()->json(['user' => $registration['user']]
+        );
     }
 
     public function login(Request $request) {
@@ -40,11 +37,7 @@ class AuthController extends Controller
             return response()->json(['message' => 'Invalid login details'], 401);
         }
 
-        return response()->json([
-            'user' => $login['user'],
-            'access_token' => $login['token'],
-            'token_type' => 'Bearer',
-        ]);
+        return response()->json(['user' => $login['user'],]);
     }
 
     public function logout(Request $request) {
