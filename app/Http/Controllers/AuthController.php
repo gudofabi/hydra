@@ -31,13 +31,13 @@ class AuthController extends Controller
 
     public function login(Request $request) {
         $credentials = $request->only('email', 'password');
-        $login = $this->userService->login($credentials);
+        $response = $this->userService->login($credentials);
 
-        if (!$login) {
+        if (!$response) {
             return response()->json(['message' => 'Invalid login details'], 401);
         }
 
-        return response()->json(['user' => $login['user'],]);
+        return response()->json($response);
     }
 
     public function logout(Request $request) {

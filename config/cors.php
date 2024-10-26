@@ -15,11 +15,11 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie', '/login', '/logout'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:8000'],
+    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000'), 'http://hydra.test'],
 
     'allowed_origins_patterns' => [],
 
