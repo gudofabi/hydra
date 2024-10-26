@@ -25,26 +25,19 @@ class AuthController extends Controller
             return response()->json(['message' => 'Registration failed'], 400);
         }
 
-        return response()->json([
-            'access_token' => $registration['token'],
-            'token_type' => 'Bearer',
-            'user' => $registration['user']
-        ]);
+        return response()->json(['user' => $registration['user']]
+        );
     }
 
     public function login(Request $request) {
         $credentials = $request->only('email', 'password');
-        $login = $this->userService->login($credentials);
+        $response = $this->userService->login($credentials);
 
-        if (!$login) {
+        if (!$response) {
             return response()->json(['message' => 'Invalid login details'], 401);
         }
 
-        return response()->json([
-            'user' => $login['user'],
-            'access_token' => $login['token'],
-            'token_type' => 'Bearer',
-        ]);
+        return response()->json($response);
     }
 
     public function logout(Request $request) {
